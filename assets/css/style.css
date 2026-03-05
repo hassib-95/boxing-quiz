@@ -138,3 +138,29 @@ h3 {
 #progress-bar {
     background-color: var(--secondary-color);
 }
+
+/* 
+   Results Section
+*/
+#results-section {
+    padding: 2rem 0;
+}
+
+#belt-rating {
+    font-family: var(--heading-font);
+    font-size: 2rem;
+    color: var(--highlight-color);
+    letter-spacing: 2px;
+}
+
+#high-score {
+    font-family: var(--heading-font);
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    letter-spacing: 2px;
+}
+
+#final-score {
+    font-size: 1.5rem;
+    color: var(--text-light);
+}
