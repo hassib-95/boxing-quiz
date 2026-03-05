@@ -55,3 +55,22 @@ h3 {
     font-size: 1.5rem;
     letter-spacing: 2px;
 }
+
+/* =========================================
+   Buttons
+   ========================================= */
+.custom-button {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    border: none;
+    padding: 12px 35px;
+    font-family: var(--heading-font);
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    transition: background-color 0.3s ease;
+}
+
+.custom-button:hover {
+    background-color: var(--highlight-color);
+    color: var(--text-dark);
+}
