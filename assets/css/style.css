@@ -1,0 +1,42 @@
+/* Google Fonts imported via link tag in HTML */
+
+/* 
+   CSS Variables
+ */
+:root {
+    --primary-font: "Inter", sans-serif;
+    --heading-font: "Bebas Neue", cursive;
+    --primary-color: #1a1a2e;
+    /* dark navy - main background */
+    --secondary-color: #e94560;
+    /* boxing red - buttons and accents */
+    --highlight-color: #f5a623;
+    /* gold - headings and highlights */
+    --text-light: #ffffff;
+    /* white - main text */
+    --text-dark: #1a1a2e;
+    /* dark navy - text on light backgrounds */
+}
+
+/* 
+   Global Styles
+   
+   */
+body {
+    font-family: var(--primary-font);
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--heading-font);
+    color: var(--highlight-color);
+    letter-spacing: 2px;
+}
+
+.section {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
