@@ -1,7 +1,181 @@
-// Wait for the page to fully load before running any code
-document.addEventListener("DOMContentLoaded", function() {
+/* 
+   Boxing Quiz - script.js
+   Custom JavaScript written for the Boxing Quiz project.
+   Question data created specifically for this project.
+   Bootstrap 5 used for responsive layout - https://getbootstrap.com
+*/
 
-    // Log to confirm JavaScript is connected
-    console.log("Boxing Quiz loaded!");
+// Wait for the page to fully load before running any code
+document.addEventListener("DOMContentLoaded", function () {
+
+    // =========================================
+    // Question Data
+    // Each question has a question, 4 options and a correct answer
+    // =========================================
+
+    var rookieQuestions = [
+        {
+            question: "What are the large padded gloves used in boxing called?",
+            options: ["Fighting gloves", "Boxing gloves", "Punch mitts", "Sparring pads"],
+            correct: "Boxing gloves"
+        },
+        {
+            question: "How many rounds are in a standard world championship boxing match?",
+            options: ["10", "15", "12", "8"],
+            correct: "12"
+        },
+        {
+            question: "What is it called when a boxer is knocked down and cannot get up before the referee counts to 10?",
+            options: ["A knockout", "A submission", "A stoppage", "A forfeit"],
+            correct: "A knockout"
+        },
+        {
+            question: "Which country did Muhammad Ali come from?",
+            options: ["United Kingdom", "Jamaica", "United States", "Canada"],
+            correct: "United States"
+        },
+        {
+            question: "What is the name of the area where boxers fight?",
+            options: ["The cage", "The ring", "The mat", "The arena"],
+            correct: "The ring"
+        },
+        {
+            question: "How many judges typically score a professional boxing match?",
+            options: ["2", "4", "5", "3"],
+            correct: "3"
+        },
+        {
+            question: "What punch is thrown with the lead hand in a straight line?",
+            options: ["Hook", "Uppercut", "Jab", "Cross"],
+            correct: "Jab"
+        },
+        {
+            question: "What does TKO stand for in boxing?",
+            options: ["Total Knockout", "Technical Knockout", "Timed Knockout", "Temporary Knockout"],
+            correct: "Technical Knockout"
+        },
+        {
+            question: "Which of these is a famous boxing weight class?",
+            options: ["Flyweight", "Birdweight", "Cloudweight", "Airweight"],
+            correct: "Flyweight"
+        },
+        {
+            question: "What do boxers wear to protect their heads during sparring?",
+            options: ["A helmet", "A headguard", "A face shield", "A cap"],
+            correct: "A headguard"
+        }
+    ];
+
+    var contenderQuestions = [
+        {
+            question: "Who was known as 'The Greatest' in boxing?",
+            options: ["Mike Tyson", "Muhammad Ali", "Sugar Ray Leonard", "Joe Frazier"],
+            correct: "Muhammad Ali"
+        },
+        {
+            question: "In which city did the famous 'Rumble in the Jungle' take place?",
+            options: ["Lagos", "Nairobi", "Kinshasa", "Accra"],
+            correct: "Kinshasa"
+        },
+        {
+            question: "Which boxer was nicknamed 'Iron Mike'?",
+            options: ["Lennox Lewis", "Evander Holyfield", "Mike Tyson", "George Foreman"],
+            correct: "Mike Tyson"
+        },
+        {
+            question: "What nationality is boxer Anthony Joshua?",
+            options: ["American", "Jamaican", "Nigerian-British", "British"],
+            correct: "British"
+        },
+        {
+            question: "Which boxer bit off part of Evander Holyfield's ear in 1997?",
+            options: ["Lennox Lewis", "Mike Tyson", "Riddick Bowe", "George Foreman"],
+            correct: "Mike Tyson"
+        },
+        {
+            question: "What is the maximum weight for a heavyweight boxer?",
+            options: ["No limit", "200 lbs", "220 lbs", "210 lbs"],
+            correct: "No limit"
+        },
+        {
+            question: "Which boxer is known as 'The Gypsy King'?",
+            options: ["Anthony Joshua", "Deontay Wilder", "Tyson Fury", "Joe Joyce"],
+            correct: "Tyson Fury"
+        },
+        {
+            question: "How long is each round in professional boxing?",
+            options: ["2 minutes", "4 minutes", "5 minutes", "3 minutes"],
+            correct: "3 minutes"
+        },
+        {
+            question: "Which boxer was undefeated with a record of 50-0?",
+            options: ["Oscar De La Hoya", "Floyd Mayweather", "Manny Pacquiao", "Sugar Ray Robinson"],
+            correct: "Floyd Mayweather"
+        },
+        {
+            question: "What is the lightest weight class in professional boxing?",
+            options: ["Bantamweight", "Flyweight", "Minimumweight", "Light Flyweight"],
+            correct: "Minimumweight"
+        }
+    ];
+
+    var championQuestions = [
+        {
+            question: "In what year did Muhammad Ali defeat George Foreman in the 'Rumble in the Jungle'?",
+            options: ["1976", "1971", "1974", "1978"],
+            correct: "1974"
+        },
+        {
+            question: "How many world titles did Sugar Ray Leonard win across different weight classes?",
+            options: ["3", "6", "4", "5"],
+            correct: "5"
+        },
+        {
+            question: "Which boxer holds the record for the most heavyweight title defenses?",
+            options: ["Muhammad Ali", "Mike Tyson", "Joe Louis", "Lennox Lewis"],
+            correct: "Joe Louis"
+        },
+        {
+            question: "What was the nickname of boxer Roberto Duran?",
+            options: ["Stone Fists", "Hands of Stone", "Iron Fists", "Rock Hands"],
+            correct: "Hands of Stone"
+        },
+        {
+            question: "In which weight class did Manny Pacquiao NOT win a world title?",
+            options: ["Light Welterweight", "Heavyweight", "Featherweight", "Light Middleweight"],
+            correct: "Heavyweight"
+        },
+        {
+            question: "What year did Tyson Fury first defeat Deontay Wilder?",
+            options: ["2018", "2021", "2019", "2020"],
+            correct: "2020"
+        },
+        {
+            question: "Which boxer was known as 'Marvelous'?",
+            options: ["Tommy Hearns", "Marvin Hagler", "Roberto Duran", "Carlos Monzon"],
+            correct: "Marvin Hagler"
+        },
+        {
+            question: "How many times did Muhammad Ali fight Joe Frazier?",
+            options: ["2", "4", "1", "3"],
+            correct: "3"
+        },
+        {
+            question: "Which country does boxer Saul 'Canelo' Alvarez come from?",
+            options: ["Colombia", "Argentina", "Mexico", "Cuba"],
+            correct: "Mexico"
+        },
+        {
+            question: "What was the name of the famous fight between Muhammad Ali and Joe Frazier in 1975?",
+            options: ["The Fight of the Century", "The Thriller in Manila", "The Rumble in the Jungle", "The Battle of Champions"],
+            correct: "The Thriller in Manila"
+        }
+    ];
+
+    // Log to confirm questions loaded correctly
+    console.log("Questions loaded!");
+    console.log("Rookie questions: " + rookieQuestions.length);
+    console.log("Contender questions: " + contenderQuestions.length);
+    console.log("Champion questions: " + championQuestions.length);
 
 });
