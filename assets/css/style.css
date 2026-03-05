@@ -21,7 +21,8 @@
 /* 
    Global Styles
    
-   */
+*/
+
 body {
     font-family: var(--primary-font);
     background-color: var(--primary-color);
@@ -39,4 +40,18 @@ h3 {
 .section {
     margin-top: 3rem;
     margin-bottom: 3rem;
+}
+
+/* 
+   Navbar
+*/
+#navbar {
+    background-color: #0d0d1a;
+}
+
+#navbar .navbar-brand {
+    font-family: var(--heading-font);
+    color: var(--highlight-color);
+    font-size: 1.5rem;
+    letter-spacing: 2px;
 }
