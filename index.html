@@ -7,6 +7,11 @@
     <meta name="description" content="Boxing Quiz - Test your boxing knowledge across three difficulty levels. From Rookie to Champion, how well do you know the sport?">
     <title>Boxing Quiz</title>
 
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+
     <!-- Google Fonts -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap">
@@ -48,6 +53,27 @@
                 <h1 class="display-3">Boxing Quiz</h1>
                 <p class="lead">Think you know your boxing? From legendary fighters to iconic bouts, put your knowledge to the test!</p>
                 <button id="start-btn" class="btn custom-button mt-3">Let's Go 🥊</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Difficulty Selection Section (hidden by default) -->
+    <section id="difficulty-section" class="container section text-center d-none">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <h2>Choose Your Level</h2>
+                <p>How well do you know your boxing?</p>
+                <div class="row justify-content-center mt-4">
+                    <div class="col-12 col-md-4 mb-3">
+                        <button class="btn difficulty-btn w-100" data-difficulty="rookie">🟢 Rookie</button>
+                    </div>
+                    <div class="col-12 col-md-4 mb-3">
+                        <button class="btn difficulty-btn w-100" data-difficulty="contender">🟡 Contender</button>
+                    </div>
+                    <div class="col-12 col-md-4 mb-3">
+                        <button class="btn difficulty-btn w-100" data-difficulty="champion">🔴 Champion</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
