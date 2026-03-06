@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Each question has a question, 4 options and a correct answer
     // =========================================
 
-    var rookieQuestions = [
+    const rookieQuestions = [
         {
             question: "What are the large padded gloves used in boxing called?",
             options: ["Fighting gloves", "Boxing gloves", "Punch mitts", "Sparring pads"],
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     ];
 
-    var contenderQuestions = [
+    const contenderQuestions = [
         {
             question: "Who was known as 'The Greatest' in boxing?",
             options: ["Mike Tyson", "Muhammad Ali", "Sugar Ray Leonard", "Joe Frazier"],
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     ];
 
-    var championQuestions = [
+    const championQuestions = [
         {
             question: "In what year did Muhammad Ali defeat George Foreman in the 'Rumble in the Jungle'?",
             options: ["1976", "1971", "1974", "1978"],
@@ -178,4 +178,48 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Contender questions: " + contenderQuestions.length);
     console.log("Champion questions: " + championQuestions.length);
 
-});
+    // =========================================
+    // Get references to all sections
+    // =========================================
+    const homeSection = document.getElementById("home-section");
+    const difficultySection = document.getElementById("difficulty-section");
+    const quizSection = document.getElementById("quiz-section");
+    const resultsSection = document.getElementById("results-section");
+
+    // =========================================
+    // Get references to all buttons
+    // =========================================
+    const startBtn = document.getElementById("start-btn");
+    const restartBtn = document.getElementById("restart-btn");
+    const difficultyBtns = document.querySelectorAll(".difficulty-btn");
+
+    // =========================================
+    // Helper function to hide all sections
+    // We call this before showing a new section
+    // =========================================
+    function hideAllSections() {
+        homeSection.classList.add("d-none");
+        difficultySection.classList.add("d-none");
+        quizSection.classList.add("d-none");
+        resultsSection.classList.add("d-none");
+    }
+
+    // =========================================
+    // When the start button is clicked,
+    // hide the home section and show the difficulty section
+    // =========================================
+    startBtn.addEventListener("click", function() {
+        hideAllSections();
+        difficultySection.classList.remove("d-none");
+    });
+
+    // =========================================
+    // When the restart button is clicked,
+    // hide all sections and show the home section
+    // =========================================
+    restartBtn.addEventListener("click", function() {
+        hideAllSections();
+        homeSection.classList.remove("d-none");
+    });
+
+}); // End of DOMContentLoaded
