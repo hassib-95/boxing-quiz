@@ -222,4 +222,80 @@ document.addEventListener("DOMContentLoaded", function () {
         homeSection.classList.remove("d-none");
     });
 
+    // =========================================
+    // Quiz State Variables
+    // These variables keep track of where we are in the quiz
+    // =========================================
+    let currentQuestions = [];   // the questions for the chosen difficulty
+    let currentQuestionIndex = 0; // which question we are on
+    let score = 0;               // the player's score
+
+    // =========================================
+    // Get references to quiz elements
+    // =========================================
+    const questionText = document.getElementById("question-text");
+    const answerButtons = document.querySelectorAll(".answer-btn");
+    const roundTracker = document.getElementById("round-tracker");
+    const scoreTracker = document.getElementById("score-tracker");
+    const progressBar = document.getElementById("progress-bar");
+
+    // =========================================
+    // When a difficulty button is clicked,
+    // load the correct questions and start the quiz
+    // =========================================
+    difficultyBtns.forEach(function(button) {
+        button.addEventListener("click", function() {
+            let difficulty = button.getAttribute("data-difficulty");
+
+            // Choose the correct question array based on difficulty
+            if (difficulty === "rookie") {
+                currentQuestions = rookieQuestions;
+            } else if (difficulty === "contender") {
+                currentQuestions = contenderQuestions;
+            } else if (difficulty === "champion") {
+                currentQuestions = championQuestions;
+            }
+
+            // Reset the quiz state
+            currentQuestionIndex = 0;
+            score = 0;
+
+            // Hide difficulty section and show quiz section
+            hideAllSections();
+            quizSection.classList.remove("d-none");
+
+            // Load the first question
+            loadQuestion();
+        });
+    });
+
+    // =========================================
+    // Function to load and display the current question
+    // =========================================
+    function loadQuestion() {
+        // Get the current question object
+        let question = currentQuestions[currentQuestionIndex];
+
+        // Update the question text
+        questionText.innerHTML = question.question;
+
+        // Update each answer button with the options
+        for (let i = 0; i < answerButtons.length; i++) {
+            answerButtons[i].innerHTML = question.options[i];
+            answerButtons[i].classList.remove("correct", "incorrect");
+            answerButtons[i].disabled = false;
+        }
+
+        // Update the round tracker
+        roundTracker.innerHTML = "Round " + (currentQuestionIndex + 1) + " of " + currentQuestions.length;
+
+        // Update the score tracker
+        scoreTracker.innerHTML = "Score: " + score;
+
+        // Update the progress bar
+        let progress = (currentQuestionIndex / currentQuestions.length) * 100;
+        progressBar.style.width = progress + "%";
+        progressBar.setAttribute("aria-valuenow", progress);
+    }
+
 }); // End of DOMContentLoaded

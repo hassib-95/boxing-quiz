@@ -134,6 +134,19 @@ h3 {
     color: var(--highlight-color);
 }
 
+/* Correct and incorrect answer feedback */
+.answer-btn.correct {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: white;
+}
+
+.answer-btn.incorrect {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+
 /* Progress bar */
 #progress-bar {
     background-color: var(--secondary-color);
