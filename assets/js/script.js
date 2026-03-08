@@ -229,6 +229,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentQuestions = [];   // the questions for the chosen difficulty
     let currentQuestionIndex = 0; // which question we are on
     let score = 0;               // the player's score
+    let timerInterval = null; 
+    let timeLeft = 15;            // seconds for each question
 
     // =========================================
     // Get references to quiz elements
@@ -296,6 +298,8 @@ document.addEventListener("DOMContentLoaded", function () {
         let progress = (currentQuestionIndex / currentQuestions.length) * 100;
         progressBar.style.width = progress + "%";
         progressBar.setAttribute("aria-valuenow", progress);
+        stopTimer();
+        startTimer();
     }
 
     // =========================================
@@ -318,6 +322,8 @@ document.addEventListener("DOMContentLoaded", function () {
         for (let i = 0; i < answerButtons.length; i++) {
             answerButtons[i].disabled = true;
         }
+
+        stopTimer();
 
         // Check if the selected answer is correct
         if (selectedAnswer === correctAnswer) {
@@ -382,6 +388,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
         progressBar.style.width = "100%";
         progressBar.setAttribute("aria-valuenow", 100);
+    }
+
+    // =========================================
+    // Function to start the timer
+    // =========================================
+    function startTimer() {
+        // Reset time to 15 seconds
+        timeLeft = 15;
+        document.getElementById("timer").innerHTML = "Time: " + timeLeft;
+
+        // Start counting down every 1 second
+        timerInterval = setInterval(function() {
+            timeLeft = timeLeft - 1;
+            document.getElementById("timer").innerHTML = "Time: " + timeLeft;
+
+            // If time runs out, move to next question
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+
+                // Disable all buttons
+                for (let i = 0; i < answerButtons.length; i++) {
+                    answerButtons[i].disabled = true;
+                }
+
+                // Wait 1 second then move on
+                setTimeout(function() {
+                    nextQuestion();
+                }, 1000);
+            }
+        }, 1000);
+    }
+
+    // =========================================
+    // Function to stop the timer
+    // =========================================
+    function stopTimer() {
+        clearInterval(timerInterval);
     }
 
 }); // End of DOMContentLoaded
