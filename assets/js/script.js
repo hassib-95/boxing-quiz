@@ -231,6 +231,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let score = 0;               // the player's score
     let timerInterval = null; 
     let timeLeft = 15;            // seconds for each question
+    let highScore = 0;             // variable to track the high score
 
     // =========================================
     // Get references to quiz elements
@@ -370,6 +371,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const finalScore = document.getElementById("final-score");
         const beltRating = document.getElementById("belt-rating");
 
+
         finalScore.innerHTML = "You scored " + score + " out of " + currentQuestions.length;
 
         let percentage = (score / currentQuestions.length) * 100;
@@ -384,6 +386,27 @@ document.addEventListener("DOMContentLoaded", function () {
             beltRating.innerHTML = "🥉 Amateur Boxer!";
         } else {
             beltRating.innerHTML = "🩹 Back to the Gym!";
+        }
+
+        // =========================================
+        // High score logic
+        // =========================================
+        const highScoreDisplay = document.getElementById("high-score");
+
+        // Get the saved high score from localStorage
+        let savedHighScore = localStorage.getItem("boxingQuizHighScore");
+
+        // If there is no saved high score, set it to 0
+        if (savedHighScore === null) {
+            savedHighScore = 0;
+        }
+
+        // If the current score is higher, save the new high score
+        if (score > savedHighScore) {
+            localStorage.setItem("boxingQuizHighScore", score);
+            highScoreDisplay.innerHTML = "🏅 New High Score: " + score + "!";
+        } else {
+            highScoreDisplay.innerHTML = "High Score: " + savedHighScore;
         }
 
         progressBar.style.width = "100%";
