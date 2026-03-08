@@ -298,4 +298,90 @@ document.addEventListener("DOMContentLoaded", function () {
         progressBar.setAttribute("aria-valuenow", progress);
     }
 
+    // =========================================
+    // Add a click event to each answer button
+    // =========================================
+    answerButtons.forEach(function(button) {
+        button.addEventListener("click", function() {
+            checkAnswer(button);
+        });
+    });
+
+    // =========================================
+    // Function to check if the answer is correct
+    // =========================================
+    function checkAnswer(selectedButton) {
+        let correctAnswer = currentQuestions[currentQuestionIndex].correct;
+        let selectedAnswer = selectedButton.innerHTML;
+
+        // Disable all buttons so the user can't click again
+        for (let i = 0; i < answerButtons.length; i++) {
+            answerButtons[i].disabled = true;
+        }
+
+        // Check if the selected answer is correct
+        if (selectedAnswer === correctAnswer) {
+            selectedButton.classList.add("correct");
+            score = score + 1;
+        } else {
+            selectedButton.classList.add("incorrect");
+
+            // Show the correct answer in green
+            for (let i = 0; i < answerButtons.length; i++) {
+                if (answerButtons[i].innerHTML === correctAnswer) {
+                    answerButtons[i].classList.add("correct");
+                }
+            }
+        }
+
+        // Wait 1.5 seconds then move to the next question
+        setTimeout(function() {
+            nextQuestion();
+        }, 1500);
+    }
+
+    // =========================================
+    // Function to move to the next question
+    // or show results if quiz is finished
+    // =========================================
+    function nextQuestion() {
+        currentQuestionIndex = currentQuestionIndex + 1;
+
+        if (currentQuestionIndex < currentQuestions.length) {
+            loadQuestion();
+        } else {
+            showResults();
+        }
+    }
+
+    // =========================================
+    // Function to show the results screen
+    // =========================================
+    function showResults() {
+        hideAllSections();
+        resultsSection.classList.remove("d-none");
+
+        const finalScore = document.getElementById("final-score");
+        const beltRating = document.getElementById("belt-rating");
+
+        finalScore.innerHTML = "You scored " + score + " out of " + currentQuestions.length;
+
+        let percentage = (score / currentQuestions.length) * 100;
+
+        if (percentage === 100) {
+            beltRating.innerHTML = "🏆 Undisputed Champion!";
+        } else if (percentage >= 80) {
+            beltRating.innerHTML = "🥇 World Champion!";
+        } else if (percentage >= 60) {
+            beltRating.innerHTML = "🥈 Contender!";
+        } else if (percentage >= 40) {
+            beltRating.innerHTML = "🥉 Amateur Boxer!";
+        } else {
+            beltRating.innerHTML = "🩹 Back to the Gym!";
+        }
+
+        progressBar.style.width = "100%";
+        progressBar.setAttribute("aria-valuenow", 100);
+    }
+
 }); // End of DOMContentLoaded
