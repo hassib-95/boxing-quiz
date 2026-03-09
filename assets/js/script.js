@@ -225,6 +225,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // =========================================
+    // Wire up navbar links to show correct sections
+    // =========================================
+    document.querySelector('a[href="#home-section"]').addEventListener("click", function(e) {
+        e.preventDefault();
+        hideAllSections();
+        homeSection.classList.remove("d-none");
+    });
+
+    document.querySelector('a[href="#difficulty-section"]').addEventListener("click", function(e) {
+        e.preventDefault();
+        hideAllSections();
+        difficultySection.classList.remove("d-none");
+    });
+
+    // =========================================
     // Quiz State Variables
     // These variables keep track of where we are in the quiz
     // =========================================
