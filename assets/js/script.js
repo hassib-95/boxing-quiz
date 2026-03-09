@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 /* 
    Boxing Quiz - script.js
    Custom JavaScript written for the Boxing Quiz project.
@@ -231,7 +233,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let score = 0;               // the player's score
     let timerInterval = null; 
     let timeLeft = 15;            // seconds for each question
-    let highScore = 0;             // variable to track the high score
 
     // =========================================
     // Get references to quiz elements
