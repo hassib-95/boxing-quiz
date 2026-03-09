@@ -27,6 +27,7 @@ body {
     font-family: var(--primary-font);
     background-color: var(--primary-color);
     color: var(--text-light);
+    padding-top: 56px; /* to account for fixed navbar height */
 }
 
 h1,
@@ -40,11 +41,14 @@ h3 {
 .section {
     margin-top: 3rem;
     margin-bottom: 3rem;
+    min-height: calc(100vh - 56px);
+    
 }
 
 /* 
    Navbar
 */
+
 #navbar {
     background-color: #0d0d1a;
 }
@@ -54,6 +58,10 @@ h3 {
     color: var(--highlight-color);
     font-size: 1.5rem;
     letter-spacing: 2px;
+}
+
+#navbar .navbar-toggler {
+    margin-left: auto;
 }
 
 /* 
@@ -176,4 +184,33 @@ h3 {
 #final-score {
     font-size: 1.5rem;
     color: var(--text-light);
+}
+
+ @media (min-width: 768px) {
+    .section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    
+}
+
+/* Hero image */
+#home-section img {
+    border-radius: 12px;
+    opacity: 0.9;
+    max-height: 300px;
+    object-fit: cover;
+    width: 100%;
+}
+
+#home-section .hero-image {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    #home-section .hero-image {
+        display: none;
+    }
 }
