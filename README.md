@@ -183,9 +183,35 @@ Both fonts are imported from Google Fonts.
 
 ### Validator Testing
 
-- *HTML* — Validated using [W3C HTML Validator](https://validator.w3.org). No errors found.
-- *CSS* — Validated using [W3C CSS Validator](https://jigsaw.w3.org/css-validator). No errors found. Warnings for CSS variables are expected and do not affect functionality.
-- *JavaScript* — Linted using [JSHint](https://jshint.com). No errors found. /* jshint esversion: 6 */ added to confirm ES6 syntax.
+All code was validated using industry standard tools to ensure it meets best practice standards.
+
+*HTML Validation*
+
+The HTML was validated using the W3C HTML Validator. No errors were found.
+
+![HTML Validation](assets/images/html-validation.png)
+
+*CSS Validation*
+
+The CSS was validated using the W3C CSS Validator. No errors were found. Warnings relate to CSS variables which are expected and do not affect functionality.
+
+![CSS Validation](assets/images/css-validator.png)
+
+*JavaScript Validation*
+
+The JavaScript was linted using JSHint. No errors were found. /* jshint esversion: 6 */ was added to the top of the file to confirm ES6 syntax is being used.
+
+![JavaScript Validation](assets/images/js-validation.png)
+
+### Agile Methodology
+
+This project was planned and managed using GitHub Projects with a Kanban board. User stories were written in the format "As a user, I want to... so that..." and prioritised using MoSCoW labels — Must Have, Should Have and Could Have. All Must Have and Should Have user stories were completed. One Could Have user story (sound effects) was not implemented due to time constraints.
+
+![User Stories Board](assets/images/user-stories-1.jpeg)
+![User Stories Board](assets/images/user-stories-2.jpeg)
+![User Stories Board](assets/images/user-stories-3.jpeg)
+![User Stories Board](assets/images/user-stories-4.jpeg)
+![User Stories Board](assets/images/user-stories-5.jpeg)
 
 ### Browser Testing
 
@@ -203,8 +229,7 @@ Both fonts are imported from Google Fonts.
 
 ### Known Bugs
 
-No known bugs at time of submission.
-
+No known bugs at at time of submission.
 ---
 
 ## Deployment
